@@ -41,8 +41,13 @@ public class IPLOperations {
 	}
 
 	public String[] getBatsmenWithMaximumFours() throws IPLException {
-		// TODO Auto-generated method stub
-		return null;
+		Comparator<IPLBattingCSV> compareByFours = Collections.reverseOrder(Comparator.comparing(player -> player.fours));
+		String[] sortedByFours = iplAnalyzerObject.iplBattingDataList.stream()
+														.sorted(compareByFours)
+														.map(player -> player.getPlayerName())
+														.toArray(size -> new String[size]);
+														
+		return ArrayUtils.subarray(sortedByFours, 0, 5);
 	}
 
 }
