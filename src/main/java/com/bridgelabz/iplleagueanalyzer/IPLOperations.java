@@ -40,4 +40,9 @@ public class IPLOperations {
 		return ArrayUtils.subarray(sortedBySixes, 0, 5);
 	}
 
+	public String[] getBatsmenWithMaximumFours() throws IPLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
