@@ -41,7 +41,8 @@ public class IPLOperations {
 		if(iplAnalyzerObject.iplBattingDataList == null || iplAnalyzerObject.iplBattingDataList.size() ==0)
 			throw new IPLException("Batting data list is empty", IPLException.ExceptionType.NO_CSV_DATA);
 	
-		Comparator<IPLBattingCSV> compareByFours = Comparator.comparing(IPLBattingCSV::getFours).reversed();
+		Comparator<IPLBattingCSV> compareByFours = Collections.reverseOrder(Comparator.comparing(IPLBattingCSV::getFours))
+															  .thenComparing(Comparator.comparing(IPLBattingCSV::getPlayerName));
 		return sort(compareByFours, iplAnalyzerObject.iplBattingDataList).map(player -> player.getPlayerName()).toArray(size -> new String[size]);
 	}
 
@@ -84,11 +85,14 @@ public class IPLOperations {
 	}
 
 	public <E> Stream<E> sort(Comparator<E> iplComparator, List<E> iplDataList){
-		return iplDataList.stream().sorted((Comparator<E>) Comparator.comparing(IPLBattingCSV::getPlayerName)).sorted(iplComparator).limit(5);
+		return iplDataList.stream().sorted(iplComparator).limit(5);
 	}
 
 	public Double[] getBestBowlingAverage() throws IPLException{
-		// TODO Auto-generated method stub
-		return null;
+		if(iplAnalyzerObject.iplBowlingDataList == null || iplAnalyzerObject.iplBowlingDataList.size() ==0)
+			throw new IPLException("Batting data list is empty", IPLException.ExceptionType.NO_CSV_DATA);
+		
+		Comparator<IPLBowlingCSV> compareByAverage =  Collections.reverseOrder(Comparator.comparing(IPLBowlingCSV::getAverage));		
+		return sort(compareByAverage, iplAnalyzerObject.iplBowlingDataList).map(player -> player.getAverage()).toArray(size -> new Double[size]);
 	}
 }

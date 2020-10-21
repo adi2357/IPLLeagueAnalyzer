@@ -15,7 +15,8 @@ public class IPLAnalyzerTest {
 	public void initialize() {
 		iplAnalyzer = new IPLAnalyzer(Paths.get(IPL_BATTING_CSV_DATA_FILE),Paths.get(IPL_BOWLING_CSV_DATA_FILE));
 		try {
-			iplAnalyzer.readCSVData();
+			iplAnalyzer.readBattingCSVData();
+			iplAnalyzer.readBowlingCSVData();
 		}catch(Exception e) {
 			System.out.println(e.getMessage());
 		}
@@ -122,7 +123,7 @@ public class IPLAnalyzerTest {
 		IPLOperations operationObject = new IPLOperations(iplAnalyzer);
 		try {
 			Double[] bestBowlingAverages = operationObject.getBestBowlingAverage();
-			Double[] expectedBestBowlingAverages = { 166.0, 118.0, 94.25, 91.5, 77.6 };
+			Double[] expectedBestBowlingAverages = { 166.0, 118.0, 94.25, 91.5, 77.66 };
 			Assert.assertArrayEquals(expectedBestBowlingAverages, bestBowlingAverages);
 		} catch (IPLException e) {
 			System.out.println(e.getMessage());

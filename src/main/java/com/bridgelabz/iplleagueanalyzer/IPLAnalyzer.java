@@ -25,11 +25,25 @@ public class IPLAnalyzer {
 		csvBowlingFilePath = bowlingFilePath;
 	}
 
-	public void readCSVData() throws IPLException {
+	public void readBattingCSVData() throws IPLException {
 		try (Reader reader = Files.newBufferedReader(csvBattingFilePath)) {
 			ICSVBuilder<IPLBattingCSV> csvBuilder = CSVBuilderFactory.createCSVBuilder();
 			Set<IPLBattingCSV> hashSet = new HashSet<IPLBattingCSV>(csvBuilder.getCSVList(reader, IPLBattingCSV.class));
 			iplBattingDataList = new ArrayList<IPLBattingCSV>(hashSet);
+		} catch (CSVException e) {
+			throw new IPLException("Invalid state present", IPLException.ExceptionType.INVALID_STATE);
+		} catch (NoSuchFileException e) {
+			throw new IPLException("Invalid state present", IPLException.ExceptionType.INVALID_FILE);
+		} catch (IOException e) {
+			throw new IPLException("Invalid I/O present", IPLException.ExceptionType.INVALID_IO);
+		}
+	}
+
+	public void readBowlingCSVData() throws IPLException {
+		try (Reader reader = Files.newBufferedReader(csvBowlingFilePath)) {
+			ICSVBuilder<IPLBowlingCSV> csvBuilder = CSVBuilderFactory.createCSVBuilder();
+			Set<IPLBowlingCSV> hashSet = new HashSet<IPLBowlingCSV>(csvBuilder.getCSVList(reader, IPLBowlingCSV.class));
+			iplBowlingDataList = new ArrayList<IPLBowlingCSV>(hashSet);
 		} catch (CSVException e) {
 			throw new IPLException("Invalid state present", IPLException.ExceptionType.INVALID_STATE);
 		} catch (NoSuchFileException e) {
