@@ -74,8 +74,13 @@ public class IPLOperations {
 	}
 
 	public String[] getBatsmenWithMaximumRunsWithBestAverages() throws IPLException {
-		// TODO Auto-generated method stub
-		return null;
+		if(iplAnalyzerObject.iplBattingDataList == null || iplAnalyzerObject.iplBattingDataList.size() ==0)
+			throw new IPLException("Batting data list is empty", IPLException.ExceptionType.NO_CSV_DATA);
+		
+		Comparator<IPLBattingCSV> compareByRuns = Collections.reverseOrder(Comparator.comparing(IPLBattingCSV::getRuns));
+		List<IPLBattingCSV> battingListSortedByMaximumRuns = sort(compareByRuns, iplAnalyzerObject.iplBattingDataList).collect(Collectors.toList());
+		Comparator<IPLBattingCSV> compareByAverage = Collections.reverseOrder(Comparator.comparing(IPLBattingCSV::getAvgerage));
+		return sort(compareByAverage, battingListSortedByMaximumRuns).map(player -> player.getPlayerName()).toArray(size -> new String[size]);
 	}
 
 	public <E> Stream<E> sort(Comparator<E> iplComparator, List<E> iplDataList){
