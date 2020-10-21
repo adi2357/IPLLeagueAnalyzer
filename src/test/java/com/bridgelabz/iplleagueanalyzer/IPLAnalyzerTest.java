@@ -60,12 +60,23 @@ public class IPLAnalyzerTest {
 	public void givenIPLBattingCSVData_ShouldReturnBatsmenWithMaximumFours() {
 		IPLOperations operationObject = new IPLOperations(battingAnalyzer);
 		try {
-			String[] batsmenWithMaximumSixes = operationObject.getBatsmenWithMaximumFours();
-			String[] expectedbatsmenWithMaximumSixes = { "Shikhar Dhawan", "David Warner", "Rohit Sharma", "KL Rahul", "Jonny Bairstow" };
-			Assert.assertArrayEquals(expectedbatsmenWithMaximumSixes, batsmenWithMaximumSixes);
+			String[] batsmenWithMaximumFours = operationObject.getBatsmenWithMaximumFours();
+			String[] expectedbatsmenWithMaximumFours = { "Shikhar Dhawan", "David Warner", "Rohit Sharma", "KL Rahul", "Jonny Bairstow" };
+			Assert.assertArrayEquals(expectedbatsmenWithMaximumFours, batsmenWithMaximumFours);
+		} catch (IPLException e) {
+			System.out.println(e.getMessage());
+		}
+	}
+
+	@Test
+	public void givenIPLBattingCSVData_ShouldReturnBatsmenWithMaximumBoundaries() {
+		IPLOperations operationObject = new IPLOperations(battingAnalyzer);
+		try {
+			String[] batsmenWithMaximumBoundaries = operationObject.getBatsmenWithMaximumBoundaries();
+			String[] expectedbatsmenWithMaximumBoundaries = { "Andre Russell", "Chris Gayle", "David Warner", "Shikhar Dhawan", "KL Rahul" };
+			Assert.assertArrayEquals(expectedbatsmenWithMaximumBoundaries, batsmenWithMaximumBoundaries);
 		} catch (IPLException e) {
 			System.out.println(e.getMessage());
 		}
 	}
 }
-	

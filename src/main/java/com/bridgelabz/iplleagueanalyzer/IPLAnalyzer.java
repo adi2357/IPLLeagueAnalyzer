@@ -5,7 +5,11 @@ import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
 import com.bridgelabz.jarfile.opencsvbuilder.CSVBuilderFactory;
 import com.bridgelabz.jarfile.opencsvbuilder.CSVException;
 import com.bridgelabz.jarfile.opencsvbuilder.ICSVBuilder;
@@ -21,7 +25,8 @@ public class IPLAnalyzer {
 	public void readCSVData() throws IPLException {
 		try (Reader reader = Files.newBufferedReader(csvBattingFilePath)) {
 			ICSVBuilder<IPLBattingCSV> csvBuilder = CSVBuilderFactory.createCSVBuilder();
-			iplBattingDataList = csvBuilder.getCSVList(reader, IPLBattingCSV.class);
+			Set<IPLBattingCSV> hashSet = new HashSet<IPLBattingCSV>(csvBuilder.getCSVList(reader, IPLBattingCSV.class));
+			iplBattingDataList = new ArrayList<IPLBattingCSV>(hashSet);
 		} catch (CSVException e) {
 			throw new IPLException("Invalid state present", IPLException.ExceptionType.INVALID_STATE);
 		} catch (NoSuchFileException e) {
