@@ -45,6 +45,11 @@ public class IPLOperations {
 		return sort(compareByFours, iplAnalyzerObject.iplBattingDataList).map(player -> player.getPlayerName()).toArray(size -> new String[size]);
 	}
 
+	public String[] getBatsmenWithBestStrikeRatesAndMaximumBoundaries() throws IPLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	public <E> Stream<E> sort(Comparator<E> iplComparator, List<E> iplDataList){
 		return iplDataList.stream().sorted((Comparator<E>) Comparator.comparing(IPLBattingCSV::getPlayerName)).sorted(iplComparator).limit(5);
 	}
