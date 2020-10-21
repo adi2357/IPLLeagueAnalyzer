@@ -13,7 +13,7 @@ public class IPLOperations {
 		this.iplAnalyzerObject = iplAnalyzerObject;
 	}
 
-	public Double[] getBestAverage() throws IPLException {
+	public Double[] getBestBattingAverage() throws IPLException {
 		if(iplAnalyzerObject.iplBattingDataList == null || iplAnalyzerObject.iplBattingDataList.size() ==0)
 			throw new IPLException("Batting data list is empty", IPLException.ExceptionType.NO_CSV_DATA);
 	
@@ -21,7 +21,7 @@ public class IPLOperations {
 		return sort(compareByAverage, iplAnalyzerObject.iplBattingDataList).map(player -> player.getAvgerage()).toArray(size -> new Double[size]);
 	}
 
-	public Double[] getTopStrikingRates() throws IPLException {
+	public Double[] getTopBattingStrikeRates() throws IPLException {
 		if(iplAnalyzerObject.iplBattingDataList == null || iplAnalyzerObject.iplBattingDataList.size() ==0)
 			throw new IPLException("Batting data list is empty", IPLException.ExceptionType.NO_CSV_DATA);
 	
@@ -85,5 +85,10 @@ public class IPLOperations {
 
 	public <E> Stream<E> sort(Comparator<E> iplComparator, List<E> iplDataList){
 		return iplDataList.stream().sorted((Comparator<E>) Comparator.comparing(IPLBattingCSV::getPlayerName)).sorted(iplComparator).limit(5);
+	}
+
+	public Double[] getBestBowlingAverage() throws IPLException{
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

@@ -16,10 +16,13 @@ import com.bridgelabz.jarfile.opencsvbuilder.ICSVBuilder;
 
 public class IPLAnalyzer {
 	public Path csvBattingFilePath;
+	public Path csvBowlingFilePath;
 	List<IPLBattingCSV> iplBattingDataList;
+	List<IPLBowlingCSV> iplBowlingDataList;
 
-	public IPLAnalyzer(Path filePath) {
-		csvBattingFilePath = filePath;
+	public IPLAnalyzer(Path battingFilePath, Path bowlingFilePath) {
+		csvBattingFilePath = battingFilePath;
+		csvBowlingFilePath = bowlingFilePath;
 	}
 
 	public void readCSVData() throws IPLException {
