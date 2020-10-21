@@ -3,6 +3,7 @@ package com.bridgelabz.iplleagueanalyzer;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class IPLOperations {
@@ -46,8 +47,10 @@ public class IPLOperations {
 	}
 
 	public String[] getBatsmenWithBestStrikeRatesAndMaximumBoundaries() throws IPLException {
-		// TODO Auto-generated method stub
-		return null;
+		Comparator<IPLBattingCSV> compareByStrikeRates = Comparator.comparing(IPLBattingCSV::getStrikeRate).reversed();
+		List<IPLBattingCSV> battingListSortedByStrikeRates = sort(compareByStrikeRates, iplAnalyzerObject.iplBattingDataList).collect(Collectors.toList());
+		Comparator<IPLBattingCSV> compareByBoundaries = Comparator.comparing(IPLBattingCSV::getBoundaries).reversed();
+		return sort(compareByBoundaries, battingListSortedByStrikeRates).map(player -> player.getPlayerName()).toArray(size -> new String[size]);
 	}
 
 	public <E> Stream<E> sort(Comparator<E> iplComparator, List<E> iplDataList){
