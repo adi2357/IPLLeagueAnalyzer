@@ -1,7 +1,6 @@
 package com.bridgelabz.iplleagueanalyzer;
 
 
-import java.io.IOException;
 import java.nio.file.Paths;
 import org.junit.Assert;
 import org.junit.Before;
@@ -22,13 +21,25 @@ public class IPLAnalyzerTest {
 	}
 	
 	@Test
-	public void givenIPLBatting_ShouldReturnBestbattingAverages() {
-		IPLOperations operationObject = new IPLOperations(battingAnalyzer);		
+	public void givenIPLBattingCSVData_ShouldReturnBestbattingAverages() {
+		IPLOperations operationObject = new IPLOperations(battingAnalyzer);
 		try {
 			Double[] bestAverages = operationObject.getBestAverage();
 			Double[] expectedbestAverages = { 83.2, 69.2, 56.66, 55.62, 53.9 };
 			Assert.assertArrayEquals(expectedbestAverages, bestAverages);
-		} catch (IOException e) {
+		} catch (IPLException e) {
+			System.out.println(e.getMessage());
+		}
+	}
+
+	@Test
+	public void givenIPLBattingCSVData_ShouldReturnTopStrikingRates() {
+		IPLOperations operationObject = new IPLOperations(battingAnalyzer);
+		try {
+			Double[] topStrikingRates = operationObject.getTopStrikingRates();
+			Double[] expectedtopStrikingRates = { 333.33, 204.81, 200.0, 191.42, 175.0 };
+			Assert.assertArrayEquals(expectedtopStrikingRates, topStrikingRates);
+		} catch (IPLException e) {
 			System.out.println(e.getMessage());
 		}
 	}
