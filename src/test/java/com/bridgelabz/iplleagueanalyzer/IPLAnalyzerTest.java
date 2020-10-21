@@ -43,4 +43,17 @@ public class IPLAnalyzerTest {
 			System.out.println(e.getMessage());
 		}
 	}
+
+	@Test
+	public void givenIPLBattingCSVData_ShouldReturnBatsmenWithMaximumSixes() {
+		IPLOperations operationObject = new IPLOperations(battingAnalyzer);
+		try {
+			String[] batsmenWithMaximumSixes = operationObject.getBatsmenWithMaximumSixes();
+			String[] expectedbatsmenWithMaximumSixes = { "Andre Russell", "Chris Gayle", "Hardik Pandya", "Rishabh Pant", "AB de Villiers" };
+			Assert.assertArrayEquals(expectedbatsmenWithMaximumSixes, batsmenWithMaximumSixes);
+		} catch (IPLException e) {
+			System.out.println(e.getMessage());
+		}
+	}
 }
+	
