@@ -84,23 +84,26 @@ public class IPLAnalyzerTest {
 	public void givenIPLBattingCSVData_ShouldReturnBatsmenWithBestStrikeRatesAndMaximumBoundaries() {
 		IPLOperations operationObject = new IPLOperations(battingAnalyzer);
 		try {
-			String[] batsmenWithBestStrikeRatesWithMaximumSixesAndFours = operationObject.getBatsmenWithBestStrikeRatesAndMaximumBoundaries();
-			String[] expectedbatsmenWithBestStrikeRatesWithMaximumSixesAndFours = { "Andre Russell", "Hardik Pandya", "Stuart Binny", "Ishant Sharma", "Shardul Thakur" };
-			Assert.assertArrayEquals(expectedbatsmenWithBestStrikeRatesWithMaximumSixesAndFours, batsmenWithBestStrikeRatesWithMaximumSixesAndFours);
+			String[] batsmenWithBestStrikeRatesWithMaximumBoundaries = operationObject.getBatsmenWithBestStrikeRatesAndMaximumBoundaries();
+			String[] expectedBatsmenWithBestStrikeRatesWithMaximumBoundaries = { "Andre Russell", "Hardik Pandya", "Stuart Binny", "Ishant Sharma", "Shardul Thakur" };
+			Assert.assertArrayEquals(expectedBatsmenWithBestStrikeRatesWithMaximumBoundaries, batsmenWithBestStrikeRatesWithMaximumBoundaries);
 		} catch (IPLException e) {
 			System.out.println(e.getMessage());
 		}
 	}
 
 	@Test
-	public void givenIPLBattingCSVData_ShouldReturnBatsmenWithBestAveragesWithBestStrikeRates() {
+	public void givenIPLBattingCSVData_ShouldReturnBatsmenWithMaximumRunsWithBestAverages() {
 		IPLOperations operationObject = new IPLOperations(battingAnalyzer);
 		try {
-			String[] batsmenWithBestStrikeRatesWithMaximumSixesAndFours = operationObject.getBatsmenWithBestAveragesWithBestStrikeRates();
-			String[] expectedbatsmenWithBestStrikeRatesWithMaximumSixesAndFours = { "Andre Russell", "Jonny Bairstow", "David Warner", "KL Rahul", "MS Dhoni" };
-			Assert.assertArrayEquals(expectedbatsmenWithBestStrikeRatesWithMaximumSixesAndFours, batsmenWithBestStrikeRatesWithMaximumSixesAndFours);
+			String[] batsmenWithMaximumRunsWithBestAverages = operationObject.getBatsmenWithMaximumRunsWithBestAverages();
+			String[] expectedBatsmenWithMaximumRunsWithBestAverages = { "David Warner", "Andre Russell", "KL Rahul", "Quinton de Kock", "Shikhar Dhawan" };
+			Assert.assertArrayEquals(expectedBatsmenWithMaximumRunsWithBestAverages, batsmenWithMaximumRunsWithBestAverages);
 		} catch (IPLException e) {
 			System.out.println(e.getMessage());
 		}
 	}
+
+	
+	
 }
