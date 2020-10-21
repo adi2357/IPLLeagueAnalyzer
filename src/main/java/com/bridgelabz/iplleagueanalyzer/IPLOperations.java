@@ -19,7 +19,11 @@ public class IPLOperations {
 	}
 
 	public Double[] getTopStrikingRates() throws IPLException {
-		return null;
+		Double[] sortedByAverage = iplAnalyzerObject.iplBattingDataList.stream()
+													.map(player -> player.getStrikeRate())
+													.sorted(Comparator.reverseOrder())
+													.toArray(size -> new Double[size]);		
+		return ArrayUtils.subarray(sortedByAverage, 0, 5);
 	}
 
 }
