@@ -40,9 +40,9 @@ public class IPLOperations {
 		return sort(compareByFours, iplAnalyzerObject.iplBattingDataList).map(player -> player.getPlayerName()).toArray(size -> new String[size]);
 	}
 
-	public String[] getBatsmenWithMaximumBoundaries() throws IPLException{
-		// TODO Auto-generated method stub
-		return null;
+	public String[] getBatsmenWithMaximumBoundaries() throws IPLException {
+		Comparator<IPLBattingCSV> compareByFours = Comparator.comparing(IPLBattingCSV::getBoundaries).reversed();
+		return sort(compareByFours, iplAnalyzerObject.iplBattingDataList).map(player -> player.getPlayerName()).toArray(size -> new String[size]);
 	}
 
 	public <E> Stream<E> sort(Comparator<E> iplComparator, List<E> iplDataList){
