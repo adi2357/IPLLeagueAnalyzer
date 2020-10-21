@@ -93,6 +93,18 @@ public class IPLAnalyzerTest {
 	}
 
 	@Test
+	public void givenIPLBattingCSVData_ShouldReturnBatsmenWithBestAveragesWithBestStrikeRates() {
+		IPLOperations operationObject = new IPLOperations(battingAnalyzer);
+		try {
+			String[] batsmenWithBestStrikeRatesWithBestStrikeRates = operationObject.getBatsmenWithBestAveragesWithBestStrikeRates();
+			String[] expectedbatsmenWithBestStrikeRatesWithBestStrikeRates = { "Andre Russell", "Jonny Bairstow", "David Warner", "KL Rahul", "MS Dhoni" };
+			Assert.assertArrayEquals(expectedbatsmenWithBestStrikeRatesWithBestStrikeRates, batsmenWithBestStrikeRatesWithBestStrikeRates);
+		} catch (IPLException e) {
+			System.out.println(e.getMessage());
+		}
+	}
+
+	@Test
 	public void givenIPLBattingCSVData_ShouldReturnBatsmenWithMaximumRunsWithBestAverages() {
 		IPLOperations operationObject = new IPLOperations(battingAnalyzer);
 		try {
@@ -103,7 +115,4 @@ public class IPLAnalyzerTest {
 			System.out.println(e.getMessage());
 		}
 	}
-
-	
-	
 }
