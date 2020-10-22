@@ -35,7 +35,7 @@ public class IPLAnalyzerTest {
 	}
 
 	@Test
-	public void givenIPLBattingCSVData_ShouldReturnTopStrikingRates() {
+	public void givenIPLBattingCSVData_ShouldReturnTopBattingStrikeRates() {
 		IPLOperations operationObject = new IPLOperations(iplAnalyzer);
 		try {
 			Double[] topStrikingRates = operationObject.getTopBattingStrikeRates();
@@ -125,6 +125,17 @@ public class IPLAnalyzerTest {
 			Double[] bestBowlingAverages = operationObject.getBestBowlingAverage();
 			Double[] expectedBestBowlingAverages = { 166.0, 118.0, 94.25, 91.5, 77.66 };
 			Assert.assertArrayEquals(expectedBestBowlingAverages, bestBowlingAverages);
+		} catch (IPLException e) {
+			System.out.println(e.getMessage());
+		}
+	}
+	@Test
+	public void givenIPLBowlingCSVData_ShouldReturnTopBowlingStrikeRates() {
+		IPLOperations operationObject = new IPLOperations(iplAnalyzer);
+		try {
+			Double[] topBowlingStrikeRates = operationObject.getTopBowlingStrikeRates();
+			Double[] expectedTopBowlingStrikeRates = { 120.0, 60.5, 54.0, 51.0, 50.0 };
+			Assert.assertArrayEquals(expectedTopBowlingStrikeRates, topBowlingStrikeRates);
 		} catch (IPLException e) {
 			System.out.println(e.getMessage());
 		}

@@ -95,4 +95,9 @@ public class IPLOperations {
 		Comparator<IPLBowlingCSV> compareByAverage =  Collections.reverseOrder(Comparator.comparing(IPLBowlingCSV::getAverage));		
 		return sort(compareByAverage, iplAnalyzerObject.iplBowlingDataList).map(player -> player.getAverage()).toArray(size -> new Double[size]);
 	}
+
+	public Double[] getTopBowlingStrikeRates() throws IPLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
