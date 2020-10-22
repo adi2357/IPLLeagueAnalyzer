@@ -2,7 +2,7 @@ package com.bridgelabz.iplleagueanalyzer;
 
 import com.opencsv.bean.CsvBindByName;
 
-public class IPLBattingCSV {
+public class IPLBatsmen {
 
 	@CsvBindByName(column = "POS", required = true)
 	int pos;
@@ -33,7 +33,7 @@ public class IPLBattingCSV {
 	@CsvBindByName(column = "6s", required = true)
 	int sixes;
 
-	public IPLBattingCSV() {
+	public IPLBatsmen() {
 	}
 
 	public int getPos() {

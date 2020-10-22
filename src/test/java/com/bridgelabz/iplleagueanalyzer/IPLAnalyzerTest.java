@@ -49,9 +49,9 @@ public class IPLAnalyzerTest {
 	public void givenIPLBattingCSVData_ShouldReturnBatsmenWithMaximumSixes() {
 		IPLOperations operationObject = new IPLOperations(iplAnalyzer);
 		try {
-			String[] batsmenWithMaximumSixes = operationObject.getBatsmenWithMaximumSixes();
-			String[] expectedBatsmenWithMaximumSixes = { "Andre Russell", "Chris Gayle", "Hardik Pandya", "Rishabh Pant", "AB de Villiers" };
-			Assert.assertArrayEquals(expectedBatsmenWithMaximumSixes, batsmenWithMaximumSixes);
+			String[] batsmenNames = operationObject.getBatsmenWithMaximumSixes();
+			String[] expectedBatsmenNames = { "Andre Russell", "Chris Gayle", "Hardik Pandya", "Rishabh Pant", "AB de Villiers" };
+			Assert.assertArrayEquals(expectedBatsmenNames, batsmenNames);
 		} catch (IPLException e) {
 			System.out.println(e.getMessage());
 		}
@@ -61,9 +61,9 @@ public class IPLAnalyzerTest {
 	public void givenIPLBattingCSVData_ShouldReturnBatsmenWithMaximumFours() {
 		IPLOperations operationObject = new IPLOperations(iplAnalyzer);
 		try {
-			String[] batsmenWithMaximumFours = operationObject.getBatsmenWithMaximumFours();
-			String[] expectedBatsmenWithMaximumFours = { "Shikhar Dhawan", "David Warner", "Rohit Sharma", "KL Rahul", "Jonny Bairstow" };
-			Assert.assertArrayEquals(expectedBatsmenWithMaximumFours, batsmenWithMaximumFours);
+			String[] batsmenNames = operationObject.getBatsmenWithMaximumFours();
+			String[] expectedBatsmenNames = { "Shikhar Dhawan", "David Warner", "Rohit Sharma", "KL Rahul", "Jonny Bairstow" };
+			Assert.assertArrayEquals(expectedBatsmenNames, batsmenNames);
 		} catch (IPLException e) {
 			System.out.println(e.getMessage());
 		}
@@ -73,9 +73,9 @@ public class IPLAnalyzerTest {
 	public void givenIPLBattingCSVData_ShouldReturnBatsmenWithMaximumBoundaries() {
 		IPLOperations operationObject = new IPLOperations(iplAnalyzer);
 		try {
-			String[] batsmenWithMaximumBoundaries = operationObject.getBatsmenWithMaximumBoundaries();
-			String[] expectedBatsmenWithMaximumBoundaries = { "Andre Russell", "Chris Gayle", "David Warner", "Shikhar Dhawan", "KL Rahul" };
-			Assert.assertArrayEquals(expectedBatsmenWithMaximumBoundaries, batsmenWithMaximumBoundaries);
+			String[] batsmenNames = operationObject.getBatsmenWithMaximumBoundaries();
+			String[] expectedBatsmenNames = { "Andre Russell", "Chris Gayle", "David Warner", "Shikhar Dhawan", "KL Rahul" };
+			Assert.assertArrayEquals(expectedBatsmenNames, batsmenNames);
 		} catch (IPLException e) {
 			System.out.println(e.getMessage());
 		}
@@ -85,9 +85,9 @@ public class IPLAnalyzerTest {
 	public void givenIPLBattingCSVData_ShouldReturnBatsmenWithBestStrikeRatesAndMaximumBoundaries() {
 		IPLOperations operationObject = new IPLOperations(iplAnalyzer);
 		try {
-			String[] batsmenWithBestStrikeRatesWithMaximumBoundaries = operationObject.getBatsmenWithBestStrikeRatesAndMaximumBoundaries();
-			String[] expectedBatsmenWithBestStrikeRatesWithMaximumBoundaries = { "Andre Russell", "Hardik Pandya", "Stuart Binny", "Ishant Sharma", "Shardul Thakur" };
-			Assert.assertArrayEquals(expectedBatsmenWithBestStrikeRatesWithMaximumBoundaries, batsmenWithBestStrikeRatesWithMaximumBoundaries);
+			String[] batsmenNames = operationObject.getBatsmenWithBestStrikeRatesAndMaximumBoundaries();
+			String[] expectedBatsmenNames = { "Andre Russell", "Hardik Pandya", "Stuart Binny", "Ishant Sharma", "Shardul Thakur" };
+			Assert.assertArrayEquals(expectedBatsmenNames, batsmenNames);
 		} catch (IPLException e) {
 			System.out.println(e.getMessage());
 		}
@@ -97,9 +97,9 @@ public class IPLAnalyzerTest {
 	public void givenIPLBattingCSVData_ShouldReturnBatsmenWithBestAveragesWithBestStrikeRates() {
 		IPLOperations operationObject = new IPLOperations(iplAnalyzer);
 		try {
-			String[] batsmenWithBestStrikeRatesWithBestStrikeRates = operationObject.getBatsmenWithBestAveragesWithBestStrikeRates();
-			String[] expectedBatsmenWithBestStrikeRatesWithBestStrikeRates = { "Andre Russell", "Jonny Bairstow", "David Warner", "KL Rahul", "MS Dhoni" };
-			Assert.assertArrayEquals(expectedBatsmenWithBestStrikeRatesWithBestStrikeRates, batsmenWithBestStrikeRatesWithBestStrikeRates);
+			String[] batsmenNames = operationObject.getBatsmenWithBestAveragesWithBestStrikeRates();
+			String[] expectedBatsmenNames = { "Andre Russell", "Jonny Bairstow", "David Warner", "KL Rahul", "MS Dhoni" };
+			Assert.assertArrayEquals(expectedBatsmenNames, batsmenNames);
 		} catch (IPLException e) {
 			System.out.println(e.getMessage());
 		}
@@ -109,9 +109,9 @@ public class IPLAnalyzerTest {
 	public void givenIPLBattingCSVData_ShouldReturnBatsmenWithMaximumRunsWithBestAverages() {
 		IPLOperations operationObject = new IPLOperations(iplAnalyzer);
 		try {
-			String[] batsmenWithMaximumRunsWithBestAverages = operationObject.getBatsmenWithMaximumRunsWithBestAverages();
-			String[] expectedBatsmenWithMaximumRunsWithBestAverages = { "David Warner", "Andre Russell", "KL Rahul", "Quinton de Kock", "Shikhar Dhawan" };
-			Assert.assertArrayEquals(expectedBatsmenWithMaximumRunsWithBestAverages, batsmenWithMaximumRunsWithBestAverages);
+			String[] batsmenNames = operationObject.getBatsmenWithMaximumRunsWithBestAverages();
+			String[] expectedBatsmenNames = { "David Warner", "Andre Russell", "KL Rahul", "Quinton de Kock", "Shikhar Dhawan" };
+			Assert.assertArrayEquals(expectedBatsmenNames, batsmenNames);
 		} catch (IPLException e) {
 			System.out.println(e.getMessage());
 		}
@@ -121,9 +121,9 @@ public class IPLAnalyzerTest {
 	public void givenIPLBowlingCSVData_ShouldReturnBestBowlingAverages() {
 		IPLOperations operationObject = new IPLOperations(iplAnalyzer);
 		try {
-			Double[] bestBowlingAverages = operationObject.getBestBowlingAverage();
-			Double[] expectedBestBowlingAverages = { 166.0, 118.0, 94.25, 91.5, 77.66 };
-			Assert.assertArrayEquals(expectedBestBowlingAverages, bestBowlingAverages);
+			Double[] batsmenNames = operationObject.getBestBowlingAverage();
+			Double[] expectedBatsmenNames = { 11.0, 14.0, 14.5, 14.72, 15.1 };
+			Assert.assertArrayEquals(expectedBatsmenNames, batsmenNames);
 		} catch (IPLException e) {
 			System.out.println(e.getMessage());
 		}
@@ -132,9 +132,9 @@ public class IPLAnalyzerTest {
 	public void givenIPLBowlingCSVData_ShouldReturnTopBowlingStrikeRates() {
 		IPLOperations operationObject = new IPLOperations(iplAnalyzer);
 		try {
-			Double[] topBowlingStrikeRates = operationObject.getTopBowlingStrikeRates();
-			Double[] expectedTopBowlingStrikeRates = { 120.0, 60.5, 54.0, 51.0, 50.0 };
-			Assert.assertArrayEquals(expectedTopBowlingStrikeRates, topBowlingStrikeRates);
+			Double[] batsmenNames = operationObject.getTopBowlingStrikeRates();
+			Double[] expectedBatsmenNames = { 8.66, 10.75, 11.0, 11.28, 12.0 };
+			Assert.assertArrayEquals(expectedBatsmenNames, batsmenNames);
 		} catch (IPLException e) {
 			System.out.println(e.getMessage());
 		}
@@ -144,9 +144,9 @@ public class IPLAnalyzerTest {
 	public void givenIPLBowlingCSVData_ShouldReturnBowlersWithBestEconomy() {
 		IPLOperations operationObject = new IPLOperations(iplAnalyzer);
 		try {
-			String[] bowlersWithBestEconomy = operationObject.getBowlersWithBestEconomy();
-			String[] expectedBowlersWithBestEconomy = { "Shivam Dube", "Anukul Roy", "Suresh Raina", "Stuart Binny", "Ravindra Jadeja" };
-			Assert.assertArrayEquals(expectedBowlersWithBestEconomy, bowlersWithBestEconomy);
+			String[] batsmenNames = operationObject.getBowlersWithBestEconomy();
+			String[] expectedBatsmenNames = { "Shivam Dube", "Anukul Roy", "Suresh Raina", "Stuart Binny", "Ravindra Jadeja" };
+			Assert.assertArrayEquals(expectedBatsmenNames, batsmenNames);
 		} catch (IPLException e) {
 			System.out.println(e.getMessage());
 		}

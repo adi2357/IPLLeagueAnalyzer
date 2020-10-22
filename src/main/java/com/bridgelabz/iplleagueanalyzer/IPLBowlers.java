@@ -2,7 +2,7 @@ package com.bridgelabz.iplleagueanalyzer;
 
 import com.opencsv.bean.CsvBindByName;
 
-public class IPLBowlingCSV {
+public class IPLBowlers {
 
 	@CsvBindByName(column = "POS", required = true)
 	int pos;
@@ -31,7 +31,7 @@ public class IPLBowlingCSV {
 	@CsvBindByName(column = "5w", required = true)
 	int fiveWickets;
 
-	public IPLBowlingCSV() {
+	public IPLBowlers() {
 	}
 
 	public int getPos() {
@@ -68,7 +68,7 @@ public class IPLBowlingCSV {
 
 	public double getAverage() {
 		if (average.equals("-"))
-			return 0.0;
+			return 200.0;
 		else
 			return Double.parseDouble(average);
 	}
@@ -79,7 +79,7 @@ public class IPLBowlingCSV {
 
 	public double getStrikeRate() {
 		if (strikeRate.equals("-"))
-			return 0.0;
+			return 200.0;
 		else
 			return Double.parseDouble(strikeRate);
 	}

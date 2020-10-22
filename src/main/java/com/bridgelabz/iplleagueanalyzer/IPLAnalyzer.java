@@ -17,8 +17,8 @@ import com.bridgelabz.jarfile.opencsvbuilder.ICSVBuilder;
 public class IPLAnalyzer {
 	public Path csvBattingFilePath;
 	public Path csvBowlingFilePath;
-	List<IPLBattingCSV> iplBattingDataList;
-	List<IPLBowlingCSV> iplBowlingDataList;
+	List<IPLBatsmen> iplBattingList;
+	List<IPLBowlers> iplBowlingList;
 
 	public IPLAnalyzer(Path battingFilePath, Path bowlingFilePath) {
 		csvBattingFilePath = battingFilePath;
@@ -27,8 +27,8 @@ public class IPLAnalyzer {
 
 	public void readBattingCSVData() throws IPLException {
 		try (Reader reader = Files.newBufferedReader(csvBattingFilePath)) {
-			ICSVBuilder<IPLBattingCSV> csvBuilder = CSVBuilderFactory.createCSVBuilder();
-			iplBattingDataList = new ArrayList<IPLBattingCSV>(new HashSet<IPLBattingCSV>(csvBuilder.getCSVList(reader, IPLBattingCSV.class)));
+			ICSVBuilder<IPLBatsmen> csvBuilder = CSVBuilderFactory.createCSVBuilder();
+			iplBattingList = new ArrayList<IPLBatsmen>(new HashSet<IPLBatsmen>(csvBuilder.getCSVList(reader, IPLBatsmen.class)));
 		} catch (CSVException e) {
 			throw new IPLException("Invalid state present", IPLException.ExceptionType.INVALID_STATE);
 		} catch (NoSuchFileException e) {
@@ -40,8 +40,8 @@ public class IPLAnalyzer {
 
 	public void readBowlingCSVData() throws IPLException {
 		try (Reader reader = Files.newBufferedReader(csvBowlingFilePath)) {
-			ICSVBuilder<IPLBowlingCSV> csvBuilder = CSVBuilderFactory.createCSVBuilder();
-			iplBowlingDataList = new ArrayList<IPLBowlingCSV>( new HashSet<IPLBowlingCSV>(csvBuilder.getCSVList(reader, IPLBowlingCSV.class)));
+			ICSVBuilder<IPLBowlers> csvBuilder = CSVBuilderFactory.createCSVBuilder();
+			iplBowlingList = new ArrayList<IPLBowlers>( new HashSet<IPLBowlers>(csvBuilder.getCSVList(reader, IPLBowlers.class)));
 		} catch (CSVException e) {
 			throw new IPLException("Invalid state present", IPLException.ExceptionType.INVALID_STATE);
 		} catch (NoSuchFileException e) {
