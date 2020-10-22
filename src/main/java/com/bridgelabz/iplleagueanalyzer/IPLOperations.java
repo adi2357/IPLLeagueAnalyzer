@@ -97,7 +97,10 @@ public class IPLOperations {
 	}
 
 	public Double[] getTopBowlingStrikeRates() throws IPLException {
-		// TODO Auto-generated method stub
-		return null;
+		if(iplAnalyzerObject.iplBowlingDataList == null || iplAnalyzerObject.iplBowlingDataList.size() ==0)
+			throw new IPLException("Batting data list is empty", IPLException.ExceptionType.NO_CSV_DATA);
+		
+		Comparator<IPLBowlingCSV> compareByStrikeRate = Collections.reverseOrder(Comparator.comparing(IPLBowlingCSV::getStrikeRate));
+		return sort(compareByStrikeRate, iplAnalyzerObject.iplBowlingDataList).map(player -> player.getStrikeRate()).toArray(size -> new Double[size]);
 	}
 }
