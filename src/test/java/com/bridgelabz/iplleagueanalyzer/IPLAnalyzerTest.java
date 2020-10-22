@@ -1,6 +1,5 @@
 package com.bridgelabz.iplleagueanalyzer;
 
-
 import java.nio.file.Paths;
 import org.junit.Assert;
 import org.junit.Before;
@@ -136,6 +135,18 @@ public class IPLAnalyzerTest {
 			Double[] topBowlingStrikeRates = operationObject.getTopBowlingStrikeRates();
 			Double[] expectedTopBowlingStrikeRates = { 120.0, 60.5, 54.0, 51.0, 50.0 };
 			Assert.assertArrayEquals(expectedTopBowlingStrikeRates, topBowlingStrikeRates);
+		} catch (IPLException e) {
+			System.out.println(e.getMessage());
+		}
+	}
+
+	@Test
+	public void givenIPLBowlingCSVData_ShouldReturnBowlersWithBestEconomy() {
+		IPLOperations operationObject = new IPLOperations(iplAnalyzer);
+		try {
+			String[] bowlersWithBestEconomy = operationObject.getBowlersWithBestEconomy();
+			String[] expectedBowlersWithBestEconomy = { "Shivam Dube", "Anukul Roy", "Suresh Raina", "Stuart Binny", "Ravindra Jadeja" };
+			Assert.assertArrayEquals(expectedBowlersWithBestEconomy, bowlersWithBestEconomy);
 		} catch (IPLException e) {
 			System.out.println(e.getMessage());
 		}

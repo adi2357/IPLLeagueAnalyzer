@@ -103,4 +103,9 @@ public class IPLOperations {
 		Comparator<IPLBowlingCSV> compareByStrikeRate = Collections.reverseOrder(Comparator.comparing(IPLBowlingCSV::getStrikeRate));
 		return sort(compareByStrikeRate, iplAnalyzerObject.iplBowlingDataList).map(player -> player.getStrikeRate()).toArray(size -> new Double[size]);
 	}
+
+	public String[] getBowlersWithBestEconomy() throws IPLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
