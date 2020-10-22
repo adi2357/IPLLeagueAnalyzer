@@ -105,7 +105,10 @@ public class IPLOperations {
 	}
 
 	public String[] getBowlersWithBestEconomy() throws IPLException {
-		// TODO Auto-generated method stub
-		return null;
+		if(iplAnalyzerObject.iplBowlingDataList == null || iplAnalyzerObject.iplBowlingDataList.size() ==0)
+			throw new IPLException("Batting data list is empty", IPLException.ExceptionType.NO_CSV_DATA);
+		
+		Comparator<IPLBowlingCSV> compareByEconomy = Comparator.comparing(IPLBowlingCSV::getEconomy);
+		return sort(compareByEconomy, iplAnalyzerObject.iplBowlingDataList).map(player -> player.getPlayerName()).toArray(size -> new String[size]);
 	}
 }
