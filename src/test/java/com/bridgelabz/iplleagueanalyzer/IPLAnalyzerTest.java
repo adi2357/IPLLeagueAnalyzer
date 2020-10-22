@@ -121,9 +121,9 @@ public class IPLAnalyzerTest {
 	public void givenIPLBowlingCSVData_ShouldReturnBestBowlingAverages() {
 		IPLOperations operationObject = new IPLOperations(iplAnalyzer);
 		try {
-			Double[] batsmenNames = operationObject.getBestBowlingAverage();
-			Double[] expectedBatsmenNames = { 11.0, 14.0, 14.5, 14.72, 15.1 };
-			Assert.assertArrayEquals(expectedBatsmenNames, batsmenNames);
+			Double[] bestBowlingAverages = operationObject.getBestBowlingAverage();
+			Double[] expectedBestBowlingAverages = { 11.0, 14.0, 14.5, 14.72, 15.1 };
+			Assert.assertArrayEquals(expectedBestBowlingAverages, bestBowlingAverages);
 		} catch (IPLException e) {
 			System.out.println(e.getMessage());
 		}
@@ -132,9 +132,9 @@ public class IPLAnalyzerTest {
 	public void givenIPLBowlingCSVData_ShouldReturnTopBowlingStrikeRates() {
 		IPLOperations operationObject = new IPLOperations(iplAnalyzer);
 		try {
-			Double[] batsmenNames = operationObject.getTopBowlingStrikeRates();
-			Double[] expectedBatsmenNames = { 8.66, 10.75, 11.0, 11.28, 12.0 };
-			Assert.assertArrayEquals(expectedBatsmenNames, batsmenNames);
+			Double[] topBowlingStrikeRates = operationObject.getTopBowlingStrikeRates();
+			Double[] expectedTopBowlingStrikeRates = { 8.66, 10.75, 11.0, 11.28, 12.0 };
+			Assert.assertArrayEquals(expectedTopBowlingStrikeRates, topBowlingStrikeRates);
 		} catch (IPLException e) {
 			System.out.println(e.getMessage());
 		}
@@ -144,9 +144,9 @@ public class IPLAnalyzerTest {
 	public void givenIPLBowlingCSVData_ShouldReturnBowlersWithBestEconomy() {
 		IPLOperations operationObject = new IPLOperations(iplAnalyzer);
 		try {
-			String[] batsmenNames = operationObject.getBowlersWithBestEconomy();
-			String[] expectedBatsmenNames = { "Shivam Dube", "Anukul Roy", "Suresh Raina", "Stuart Binny", "Ravindra Jadeja" };
-			Assert.assertArrayEquals(expectedBatsmenNames, batsmenNames);
+			String[] bowlerNames = operationObject.getBowlersWithBestEconomy();
+			String[] expectedBowlerNames = { "Shivam Dube", "Anukul Roy", "Suresh Raina", "Stuart Binny", "Ravindra Jadeja" };
+			Assert.assertArrayEquals(expectedBowlerNames, bowlerNames);
 		} catch (IPLException e) {
 			System.out.println(e.getMessage());
 		}
