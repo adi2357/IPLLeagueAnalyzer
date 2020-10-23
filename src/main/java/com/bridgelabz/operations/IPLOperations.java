@@ -109,7 +109,10 @@ public class IPLOperations {
 	}
 
 	public String[] getBowlersWithBestAveragesAndBestStrikeRates() throws IPLException {
-		// TODO Auto-generated method stub
-		return null;
+		checkCSVData(iplAnalyzerObject.iplBowlingList);
+		Comparator<IPLBowlers> compareByAverage = Comparator.comparing(IPLBowlers::getAverage);
+		List<IPLBowlers> bowlerListSortedByAverage = sort(compareByAverage, iplAnalyzerObject.iplBowlingList).collect(Collectors.toList());
+		Comparator<IPLBowlers> compareByStrikeRate = Comparator.comparing(IPLBowlers::getStrikeRate).thenComparing(IPLBowlers::getPlayerName);
+		return sort(compareByStrikeRate, bowlerListSortedByAverage).map(player -> player.getPlayerName()).toArray(size -> new String[size]);
 	}
 }
