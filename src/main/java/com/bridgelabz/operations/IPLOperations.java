@@ -142,7 +142,10 @@ public class IPLOperations {
 	}
 
 	public String[] getBatsmenWithMaximumHundredsAndBestAverages() throws IPLException {
-		// TODO Auto-generated method stub
-		return null;
+		checkCSVData(iplAnalyzerObject.iplBattingList);
+		Comparator<IPLBatsmen> compareByHundreds = Collections.reverseOrder(Comparator.comparing(IPLBatsmen::getHundres));
+		List<IPLBatsmen> battingListSortedByHundreds = sort(compareByHundreds, iplAnalyzerObject.iplBattingList, 5).collect(Collectors.toList());
+		Comparator<IPLBatsmen> compareByAverage = Collections.reverseOrder(Comparator.comparing(IPLBatsmen::getAverage));
+		return sort(compareByAverage, battingListSortedByHundreds, 5).map(player -> player .getPlayerName()).toArray(size -> new String[size]);
 	}
 }
