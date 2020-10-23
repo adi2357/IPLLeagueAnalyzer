@@ -40,6 +40,10 @@ public class IPLAllRounder {
 		return (this.battingAverage + 200 - this.bowlingAverage);
 	}
 
+	public double getPerformanceByRunsAndWickets() {
+		return (this.runs * this.wickets);
+	}
+
 	@Override
 	public String toString() {
 		return "IPLAllRounder [playerName=" + playerName + ", battingAverage=" + battingAverage + ", bowlingAverage="
