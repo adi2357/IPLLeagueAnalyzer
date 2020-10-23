@@ -20,6 +20,7 @@ public class IPLAnalyzerTest {
 		try {
 			iplAnalyzer.readBattingCSVData();
 			iplAnalyzer.readBowlingCSVData();
+			iplAnalyzer.readAllRounderData();
 		}catch(Exception e) {
 			System.out.println(e.getMessage());
 		}

@@ -8,6 +8,7 @@ import java.util.stream.Stream;
 
 import com.bridgelabz.analyzer.IPLAnalyzer;
 import com.bridgelabz.exception.IPLException;
+import com.bridgelabz.players.IPLAllRounder;
 import com.bridgelabz.players.IPLBatsmen;
 import com.bridgelabz.players.IPLBowlers;
 
@@ -124,8 +125,11 @@ public class IPLOperations {
 		return sort(compareByAverage, bowlerListSortedByWickets, 5).map(player -> player.getPlayerName()).toArray(size -> new String[size]);
 	}
 
-	public String[] getCricketersWithBestBattingAndBowlingAverages() throws IPLException {
-		// TODO Auto-generated method stub
-		return null;
+	public String[] getCricketersWithBestBattingAndBowlingAverages() throws IPLException{
+		checkCSVData(iplAnalyzerObject.iplBowlingList);
+		checkCSVData(iplAnalyzerObject.iplBattingList);
+		checkCSVData(iplAnalyzerObject.iplAllRounderList);
+		Comparator<IPLAllRounder> compareBowlersByAverage = Collections.reverseOrder(Comparator.comparing(IPLAllRounder::getPerformanceByAverage));
+		return sort(compareBowlersByAverage, iplAnalyzerObject.iplAllRounderList, 5).map(player -> player.getPlayerName()).toArray(size -> new String[size]);
 	}
 }
