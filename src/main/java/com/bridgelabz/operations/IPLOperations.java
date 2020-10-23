@@ -3,6 +3,7 @@ package com.bridgelabz.operations;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -149,7 +150,11 @@ public class IPLOperations {
 		return sort(compareByAverage, battingListSortedByHundreds, 5).map(player -> player .getPlayerName()).toArray(size -> new String[size]);
 	}
 
-	public String[] getBatsmenWithZeroHundredsAndFiftiesButBestAverages() throws IPLException{		
-		return null;
+	public String[] getBatsmenWithZeroHundredsAndFiftiesButBestAverages() throws IPLException{
+		checkCSVData(iplAnalyzerObject.iplBattingList);
+		Predicate<IPLBatsmen> fiteredByZeroHundredAndFifty = player -> (player.getHundres() == 0 && player.getFifties() == 0);
+		List<IPLBatsmen> listFilteredByHundredsAndFifties = iplAnalyzerObject.iplBattingList.stream().filter(fiteredByZeroHundredAndFifty).collect(Collectors.toList());
+		Comparator<IPLBatsmen> compareByAverage = Comparator.comparing(IPLBatsmen::getAverage).reversed().thenComparing(IPLBatsmen::getPlayerName);
+		return sort(compareByAverage, listFilteredByHundredsAndFifties, 5).map(player -> player.getPlayerName()).toArray(size -> new String[size]);
 	}
 }

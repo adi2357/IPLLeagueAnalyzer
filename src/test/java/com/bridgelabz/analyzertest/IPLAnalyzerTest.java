@@ -190,7 +190,7 @@ public class IPLAnalyzerTest {
 			Assert.assertArrayEquals(expectedBowlerNames, bowlerNames);
 		} catch (IPLException e) {
 			System.out.println(e.getMessage());
-		}		
+		}
 	}
 
 	@Test
@@ -202,7 +202,7 @@ public class IPLAnalyzerTest {
 			Assert.assertArrayEquals(expectedCricketerNames, cricketerNames);
 		} catch (IPLException e) {
 			System.out.println(e.getMessage());
-		}		
+		}
 	}
 
 	@Test
@@ -214,7 +214,7 @@ public class IPLAnalyzerTest {
 			Assert.assertArrayEquals(expectedCricketerNames, cricketerNames);
 		} catch (IPLException e) {
 			System.out.println(e.getMessage());
-		}		
+		}
 	}
 
 	@Test
@@ -226,7 +226,7 @@ public class IPLAnalyzerTest {
 			Assert.assertArrayEquals(expectedBatsmenNames, batsmenNames);
 		} catch (IPLException e) {
 			System.out.println(e.getMessage());
-		}		
+		}
 	}
 
 	@Test
@@ -238,6 +238,6 @@ public class IPLAnalyzerTest {
 			Assert.assertArrayEquals(expectedBatsmenNames, batsmenNames);
 		} catch (IPLException e) {
 			System.out.println(e.getMessage());
-		}		
+		}
 	}
 }
