@@ -185,7 +185,7 @@ public class IPLAnalyzerTest {
 		IPLOperations operationObject = new IPLOperations(iplAnalyzer);
 		try {
 			String[] bowlerNames = operationObject.getBowlersWithMaximumWicketsAndBestAverages();
-			String[] expectedBowlerNames = {"Kagiso Rabada", "Khaleel Ahmed", "Imran Tahir", "Shreyas Gopal", "Deepak Chahar"};
+			String[] expectedBowlerNames = {"Kagiso Rabada", "Imran Tahir", "Shreyas Gopal", "Jasprit Bumrah", "Deepak Chahar"};
 			Assert.assertArrayEquals(expectedBowlerNames, bowlerNames);
 		} catch (IPLException e) {
 			System.out.println(e.getMessage());

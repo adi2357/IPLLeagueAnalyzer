@@ -117,7 +117,10 @@ public class IPLOperations {
 	}
 
 	public String[] getBowlersWithMaximumWicketsAndBestAverages() throws IPLException {
-		// TODO Auto-generated method stub
-		return null;
+		checkCSVData(iplAnalyzerObject.iplBowlingList);
+		Comparator<IPLBowlers> compareByWickets = Collections.reverseOrder(Comparator.comparing(IPLBowlers::getWickets)).thenComparing(IPLBowlers::getPlayerName);
+		List<IPLBowlers> bowlerListSortedByWickets = sort(compareByWickets, iplAnalyzerObject.iplBowlingList).collect(Collectors.toList());
+		Comparator<IPLBowlers> compareByAverage = Comparator.comparing(IPLBowlers::getAverage);
+		return sort(compareByAverage, bowlerListSortedByWickets).map(player -> player.getPlayerName()).toArray(size -> new String[size]);
 	}
 }
