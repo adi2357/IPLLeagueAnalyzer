@@ -129,7 +129,11 @@ public class IPLOperations {
 		checkCSVData(iplAnalyzerObject.iplBowlingList);
 		checkCSVData(iplAnalyzerObject.iplBattingList);
 		checkCSVData(iplAnalyzerObject.iplAllRounderList);
-		Comparator<IPLAllRounder> compareBowlersByAverage = Collections.reverseOrder(Comparator.comparing(IPLAllRounder::getPerformanceByAverage));
-		return sort(compareBowlersByAverage, iplAnalyzerObject.iplAllRounderList, 5).map(player -> player.getPlayerName()).toArray(size -> new String[size]);
+		Comparator<IPLAllRounder> compareByAveragePerformance = Collections.reverseOrder(Comparator.comparing(IPLAllRounder::getPerformanceByAverage));
+		return sort(compareByAveragePerformance, iplAnalyzerObject.iplAllRounderList, 5).map(player -> player.getPlayerName()).toArray(size -> new String[size]);
+	}
+
+	public String[] getCricketersWithMostRunsAndWickets() throws IPLException {		
+		return null;
 	}
 }

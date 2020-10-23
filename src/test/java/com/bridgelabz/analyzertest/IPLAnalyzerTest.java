@@ -197,9 +197,21 @@ public class IPLAnalyzerTest {
 	public void givenIPLBowlingCSVData_WhenBestBattingAndBowlingAverages_ShouldReturnCricketers() {
 		IPLOperations operationObject = new IPLOperations(iplAnalyzer);
 		try {
-			String[] bowlerNames = operationObject.getCricketersWithBestBattingAndBowlingAverages();
-			String[] expectedBowlerNames = {"Andre Russell", "Hardik Pandya", "Ravindra Jadeja", "Nitish Rana", "Mitchell Santner"};
-			Assert.assertArrayEquals(expectedBowlerNames, bowlerNames);
+			String[] cricketerNames = operationObject.getCricketersWithBestBattingAndBowlingAverages();
+			String[] expectedCricketerNames = {"Andre Russell", "Hardik Pandya", "Ravindra Jadeja", "Nitish Rana", "Mitchell Santner"};
+			Assert.assertArrayEquals(expectedCricketerNames, cricketerNames);
+		} catch (IPLException e) {
+			System.out.println(e.getMessage());
+		}		
+	}
+
+	@Test
+	public void givenIPLBowlingCSVData_WhenMostRunsAndWickets_ShouldReturnCricketers() {
+		IPLOperations operationObject = new IPLOperations(iplAnalyzer);
+		try {
+			String[] cricketerNames = operationObject.getCricketersWithMostRunsAndWickets();
+			String[] expectedCricketerNames = {"Hardik Pandya", "Andre Russell", "Krunal Pandya", "Ravindra Jadeja", "Sunil Narine"};
+			Assert.assertArrayEquals(expectedCricketerNames, cricketerNames);
 		} catch (IPLException e) {
 			System.out.println(e.getMessage());
 		}		
