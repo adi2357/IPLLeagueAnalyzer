@@ -140,4 +140,9 @@ public class IPLOperations {
 		Comparator<IPLAllRounder> compareByRunsAndWicketPerformance = Collections.reverseOrder(Comparator.comparing(IPLAllRounder::getPerformanceByRunsAndWickets));
 		return sort(compareByRunsAndWicketPerformance, iplAnalyzerObject.iplAllRounderList, 5).map(player -> player.getPlayerName()).toArray(size -> new String[size]);
 	}
+
+	public String[] getBatsmenWithMaximumHundredsAndBestAverages() throws IPLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
