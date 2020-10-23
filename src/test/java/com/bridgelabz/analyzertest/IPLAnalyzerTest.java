@@ -179,4 +179,16 @@ public class IPLAnalyzerTest {
 			System.out.println(e.getMessage());
 		}
 	}
+
+	@Test
+	public void givenIPLBowlingCSVData_WhenMaximumWicketsAndBestAverages_ShouldReturnBowlers() {
+		IPLOperations operationObject = new IPLOperations(iplAnalyzer);
+		try {
+			String[] bowlerNames = operationObject.getBowlersWithMaximumWicketsAndBestAverages();
+			String[] expectedBowlerNames = {"Kagiso Rabada", "Khaleel Ahmed", "Imran Tahir", "Shreyas Gopal", "Deepak Chahar"};
+			Assert.assertArrayEquals(expectedBowlerNames, bowlerNames);
+		} catch (IPLException e) {
+			System.out.println(e.getMessage());
+		}		
+	}
 }

@@ -115,4 +115,9 @@ public class IPLOperations {
 		Comparator<IPLBowlers> compareByStrikeRate = Comparator.comparing(IPLBowlers::getStrikeRate).thenComparing(IPLBowlers::getPlayerName);
 		return sort(compareByStrikeRate, bowlerListSortedByAverage).map(player -> player.getPlayerName()).toArray(size -> new String[size]);
 	}
+
+	public String[] getBowlersWithMaximumWicketsAndBestAverages() throws IPLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
