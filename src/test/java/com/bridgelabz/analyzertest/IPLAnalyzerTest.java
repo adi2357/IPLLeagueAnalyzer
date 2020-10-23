@@ -167,4 +167,16 @@ public class IPLAnalyzerTest {
 			System.out.println(e.getMessage());
 		}
 	}
+
+	@Test
+	public void givenIPLBowlingCSVData_WhenBestAveragesWithStrikeRates_ShouldReturnBowlers() {
+		IPLOperations operationObject = new IPLOperations(iplAnalyzer);
+		try {
+			String[] bowlerNames = operationObject.getBowlersWithBestAveragesAndBestStrikeRates();
+			String[] expectedBowlerNames = {"Alzarri Joseph", "Khaleel Ahmed", "Kagiso Rabada", "Anukul Roy",  "Jagadeesha Suchith"};
+			Assert.assertArrayEquals(expectedBowlerNames, bowlerNames);
+		} catch (IPLException e) {
+			System.out.println(e.getMessage());
+		}
+	}
 }

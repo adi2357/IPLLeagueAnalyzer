@@ -107,4 +107,9 @@ public class IPLOperations {
 		Comparator<IPLBowlers> compareByStrikeRateAnd4wAnd5w = compareByFourAndFiveWickets.thenComparing(compareByStrikeRate);
 		return sort(compareByStrikeRateAnd4wAnd5w, iplAnalyzerObject.iplBowlingList).map(player -> player.getPlayerName()).toArray(size -> new String[size]);
 	}
+
+	public String[] getBowlersWithBestAveragesAndBestStrikeRates() throws IPLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
