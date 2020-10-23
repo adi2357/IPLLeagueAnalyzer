@@ -228,4 +228,16 @@ public class IPLAnalyzerTest {
 			System.out.println(e.getMessage());
 		}		
 	}
+
+	@Test
+	public void givenIPLBattingCSVData_WhenZeroHundredsAndFiftiesButBestAverages_ShouldReturnBatsmen() {
+		IPLOperations operationObject = new IPLOperations(iplAnalyzer);
+		try {
+			String[] batsmenNames = operationObject.getBatsmenWithZeroHundredsAndFiftiesButBestAverages();
+			String[] expectedBatsmenNames = {"Marcus Stoinis", "Mandeep Singh", "Ravindra Jadeja","Jofra Archer", "Mitchell Santner"};
+			Assert.assertArrayEquals(expectedBatsmenNames, batsmenNames);
+		} catch (IPLException e) {
+			System.out.println(e.getMessage());
+		}		
+	}
 }

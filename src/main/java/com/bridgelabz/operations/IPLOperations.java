@@ -148,4 +148,8 @@ public class IPLOperations {
 		Comparator<IPLBatsmen> compareByAverage = Collections.reverseOrder(Comparator.comparing(IPLBatsmen::getAverage));
 		return sort(compareByAverage, battingListSortedByHundreds, 5).map(player -> player .getPlayerName()).toArray(size -> new String[size]);
 	}
+
+	public String[] getBatsmenWithZeroHundredsAndFiftiesButBestAverages() throws IPLException{		
+		return null;
+	}
 }
