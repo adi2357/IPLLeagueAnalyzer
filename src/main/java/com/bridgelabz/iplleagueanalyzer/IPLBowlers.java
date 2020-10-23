@@ -91,4 +91,8 @@ public class IPLBowlers {
 	public int getFiveWickets() {
 		return fiveWickets;
 	}
+
+	public int getFourAndFiveWickets() {
+		return ((5 * fiveWickets) + (4 * fourWickets));
+	}
 }

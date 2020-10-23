@@ -111,4 +111,9 @@ public class IPLOperations {
 		Comparator<IPLBowlers> compareByEconomy = Comparator.comparing(IPLBowlers::getEconomy);
 		return sort(compareByEconomy, iplAnalyzerObject.iplBowlingList).map(player -> player.getPlayerName()).toArray(size -> new String[size]);
 	}
+
+	public String[] getBowlersWithBestStrikeRatesWithFourAndFiveWickets() throws IPLException {
+		
+		return null;
+	}
 }
