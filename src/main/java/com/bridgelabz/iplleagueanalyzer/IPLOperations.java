@@ -113,7 +113,12 @@ public class IPLOperations {
 	}
 
 	public String[] getBowlersWithBestStrikeRatesWithFourAndFiveWickets() throws IPLException {
+		if(iplAnalyzerObject.iplBowlingList == null || iplAnalyzerObject.iplBowlingList.size() ==0)
+			throw new IPLException("Batting data list is empty", IPLException.ExceptionType.NO_CSV_DATA);
 		
-		return null;
+		Comparator<IPLBowlers> compareByStrikeRate = Comparator.comparing(IPLBowlers::getStrikeRate);
+		Comparator<IPLBowlers> compareByFourAndFiveWickets = Comparator.comparing(IPLBowlers::getFourAndFiveWickets).reversed();
+		Comparator<IPLBowlers> compareByStrikeRateAnd4wAnd5w = compareByFourAndFiveWickets.thenComparing(compareByStrikeRate);
+		return sort(compareByStrikeRateAnd4wAnd5w, iplAnalyzerObject.iplBowlingList).map(player -> player.getPlayerName()).toArray(size -> new String[size]);
 	}
 }
