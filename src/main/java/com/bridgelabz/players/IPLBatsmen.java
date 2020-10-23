@@ -64,7 +64,7 @@ public class IPLBatsmen {
 		return highestScore;
 	}
 
-	public Double getAvgerage() {
+	public Double getAverage() {
 		if (average.equals("-"))
 			return 0.0;
 		else
