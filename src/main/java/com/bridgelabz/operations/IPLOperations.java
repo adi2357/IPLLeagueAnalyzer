@@ -1,10 +1,15 @@
-package com.bridgelabz.iplleagueanalyzer;
+package com.bridgelabz.operations;
 
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
+import com.bridgelabz.analyzer.IPLAnalyzer;
+import com.bridgelabz.exception.IPLException;
+import com.bridgelabz.players.IPLBatsmen;
+import com.bridgelabz.players.IPLBowlers;
 
 public class IPLOperations {
 	IPLAnalyzer iplAnalyzerObject;
@@ -14,50 +19,38 @@ public class IPLOperations {
 	}
 
 	public Double[] getBestBattingAverage() throws IPLException {
-		if(iplAnalyzerObject.iplBattingList == null || iplAnalyzerObject.iplBattingList.size() ==0)
-			throw new IPLException("Batting data list is empty", IPLException.ExceptionType.NO_CSV_DATA);
-	
+		checkCSVData(iplAnalyzerObject.iplBattingList);
 		Comparator<IPLBatsmen> compareByAverage = Collections.reverseOrder(Comparator.comparing(IPLBatsmen::getAvgerage));
 		return sort(compareByAverage, iplAnalyzerObject.iplBattingList).map(player -> player.getAvgerage()).toArray(size -> new Double[size]);
 	}
 
 	public Double[] getTopBattingStrikeRates() throws IPLException {
-		if(iplAnalyzerObject.iplBattingList == null || iplAnalyzerObject.iplBattingList.size() ==0)
-			throw new IPLException("Batting data list is empty", IPLException.ExceptionType.NO_CSV_DATA);
-	
+		checkCSVData(iplAnalyzerObject.iplBattingList);
 		Comparator<IPLBatsmen> compareByStrikeRate = Collections.reverseOrder(Comparator.comparing(IPLBatsmen::getStrikeRate));		
 		return sort(compareByStrikeRate, iplAnalyzerObject.iplBattingList).map(player -> player.getStrikeRate()).toArray(size -> new Double[size]);
 	}
 
 	public String[] getBatsmenWithMaximumSixes() throws IPLException {
-		if(iplAnalyzerObject.iplBattingList == null || iplAnalyzerObject.iplBattingList.size() ==0)
-			throw new IPLException("Batting data list is empty", IPLException.ExceptionType.NO_CSV_DATA);
-	
+		checkCSVData(iplAnalyzerObject.iplBattingList);
 		Comparator<IPLBatsmen> compareBySixes = Collections.reverseOrder(Comparator.comparing(IPLBatsmen::getSixes));		
 		return sort(compareBySixes, iplAnalyzerObject.iplBattingList).map(player -> player.getPlayerName()).toArray(size -> new String[size]);
 	}
 
 	public String[] getBatsmenWithMaximumFours() throws IPLException {
-		if(iplAnalyzerObject.iplBattingList == null || iplAnalyzerObject.iplBattingList.size() ==0)
-			throw new IPLException("Batting data list is empty", IPLException.ExceptionType.NO_CSV_DATA);
-	
+		checkCSVData(iplAnalyzerObject.iplBattingList);
 		Comparator<IPLBatsmen> compareByFours = Collections.reverseOrder(Comparator.comparing(IPLBatsmen::getFours))
 															  .thenComparing(Comparator.comparing(IPLBatsmen::getPlayerName));
 		return sort(compareByFours, iplAnalyzerObject.iplBattingList).map(player -> player.getPlayerName()).toArray(size -> new String[size]);
 	}
 
 	public String[] getBatsmenWithMaximumBoundaries() throws IPLException {
-		if(iplAnalyzerObject.iplBattingList == null || iplAnalyzerObject.iplBattingList.size() ==0)
-			throw new IPLException("Batting data list is empty", IPLException.ExceptionType.NO_CSV_DATA);
-	
+		checkCSVData(iplAnalyzerObject.iplBattingList);
 		Comparator<IPLBatsmen> compareByFours = Comparator.comparing(IPLBatsmen::getBoundaries).reversed();
 		return sort(compareByFours, iplAnalyzerObject.iplBattingList).map(player -> player.getPlayerName()).toArray(size -> new String[size]);
 	}
 
 	public String[] getBatsmenWithBestStrikeRatesAndMaximumBoundaries() throws IPLException {
-		if(iplAnalyzerObject.iplBattingList == null || iplAnalyzerObject.iplBattingList.size() ==0)
-			throw new IPLException("Batting data list is empty", IPLException.ExceptionType.NO_CSV_DATA);
-	
+		checkCSVData(iplAnalyzerObject.iplBattingList);
 		Comparator<IPLBatsmen> compareByStrikeRates = Comparator.comparing(IPLBatsmen::getStrikeRate).reversed();
 		List<IPLBatsmen> battingListSortedByStrikeRates = sort(compareByStrikeRates, iplAnalyzerObject.iplBattingList).collect(Collectors.toList());
 		Comparator<IPLBatsmen> compareByBoundaries = Comparator.comparing(IPLBatsmen::getBoundaries).reversed();
@@ -65,9 +58,7 @@ public class IPLOperations {
 	}
 
 	public String[] getBatsmenWithBestAveragesWithBestStrikeRates() throws IPLException{
-		if(iplAnalyzerObject.iplBattingList == null || iplAnalyzerObject.iplBattingList.size() ==0)
-			throw new IPLException("Batting data list is empty", IPLException.ExceptionType.NO_CSV_DATA);
-	
+		checkCSVData(iplAnalyzerObject.iplBattingList);
 		Comparator<IPLBatsmen> compareByAverage = Collections.reverseOrder(Comparator.comparing(IPLBatsmen::getAvgerage));
 		List<IPLBatsmen> battingListSortedByBestAverages = sort(compareByAverage, iplAnalyzerObject.iplBattingList).collect(Collectors.toList());
 		Comparator<IPLBatsmen> compareByStrikeRates = Comparator.comparing(IPLBatsmen::getStrikeRate).reversed();
@@ -75,9 +66,7 @@ public class IPLOperations {
 	}
 
 	public String[] getBatsmenWithMaximumRunsWithBestAverages() throws IPLException {
-		if(iplAnalyzerObject.iplBattingList == null || iplAnalyzerObject.iplBattingList.size() ==0)
-			throw new IPLException("Batting data list is empty", IPLException.ExceptionType.NO_CSV_DATA);
-		
+		checkCSVData(iplAnalyzerObject.iplBattingList);
 		Comparator<IPLBatsmen> compareByRuns = Collections.reverseOrder(Comparator.comparing(IPLBatsmen::getRuns));
 		List<IPLBatsmen> battingListSortedByMaximumRuns = sort(compareByRuns, iplAnalyzerObject.iplBattingList).collect(Collectors.toList());
 		Comparator<IPLBatsmen> compareByAverage = Collections.reverseOrder(Comparator.comparing(IPLBatsmen::getAvgerage));
@@ -88,34 +77,31 @@ public class IPLOperations {
 		return iplDataList.stream().sorted(iplComparator).limit(5);
 	}
 
+	public <E> void checkCSVData(List<E> playerDataList) throws IPLException {
+		if(playerDataList == null || playerDataList.size() ==0)
+			throw new IPLException("Player data list is empty", IPLException.ExceptionType.NO_CSV_DATA);
+	}
+
 	public Double[] getBestBowlingAverage() throws IPLException{
-		if(iplAnalyzerObject.iplBowlingList == null || iplAnalyzerObject.iplBowlingList.size() ==0)
-			throw new IPLException("Batting data list is empty", IPLException.ExceptionType.NO_CSV_DATA);
-		
+		checkCSVData(iplAnalyzerObject.iplBowlingList);
 		Comparator<IPLBowlers> compareByAverage = Comparator.comparing(IPLBowlers::getAverage);		
 		return sort(compareByAverage, iplAnalyzerObject.iplBowlingList).map(player -> player.getAverage()).toArray(size -> new Double[size]);
 	}
 
 	public Double[] getTopBowlingStrikeRates() throws IPLException {
-		if(iplAnalyzerObject.iplBowlingList == null || iplAnalyzerObject.iplBowlingList.size() ==0)
-			throw new IPLException("Batting data list is empty", IPLException.ExceptionType.NO_CSV_DATA);
-		
+		checkCSVData(iplAnalyzerObject.iplBowlingList);
 		Comparator<IPLBowlers> compareByStrikeRate = Comparator.comparing(IPLBowlers::getStrikeRate).thenComparing(Comparator.comparing(IPLBowlers::getPlayerName));
 		return sort(compareByStrikeRate, iplAnalyzerObject.iplBowlingList).map(player -> player.getStrikeRate()).toArray(size -> new Double[size]);
 	}
 
 	public String[] getBowlersWithBestEconomy() throws IPLException {
-		if(iplAnalyzerObject.iplBowlingList == null || iplAnalyzerObject.iplBowlingList.size() ==0)
-			throw new IPLException("Batting data list is empty", IPLException.ExceptionType.NO_CSV_DATA);
-		
+		checkCSVData(iplAnalyzerObject.iplBowlingList);
 		Comparator<IPLBowlers> compareByEconomy = Comparator.comparing(IPLBowlers::getEconomy);
 		return sort(compareByEconomy, iplAnalyzerObject.iplBowlingList).map(player -> player.getPlayerName()).toArray(size -> new String[size]);
 	}
 
 	public String[] getBowlersWithBestStrikeRatesWithFourAndFiveWickets() throws IPLException {
-		if(iplAnalyzerObject.iplBowlingList == null || iplAnalyzerObject.iplBowlingList.size() ==0)
-			throw new IPLException("Batting data list is empty", IPLException.ExceptionType.NO_CSV_DATA);
-		
+		checkCSVData(iplAnalyzerObject.iplBowlingList);
 		Comparator<IPLBowlers> compareByStrikeRate = Comparator.comparing(IPLBowlers::getStrikeRate);
 		Comparator<IPLBowlers> compareByFourAndFiveWickets = Comparator.comparing(IPLBowlers::getFourAndFiveWickets).reversed();
 		Comparator<IPLBowlers> compareByStrikeRateAnd4wAnd5w = compareByFourAndFiveWickets.thenComparing(compareByStrikeRate);

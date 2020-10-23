@@ -1,9 +1,5 @@
-package com.bridgelabz.iplleagueanalyzer;
+package com.bridgelabz.helloworld;
 
-/**
- * Hello world!
- *
- */
 public class App 
 {
     public static void main( String[] args )

@@ -1,4 +1,4 @@
-package com.bridgelabz.iplleagueanalyzer;
+package com.bridgelabz.exception;
 
 public class IPLException extends Exception{
 

@@ -1,9 +1,13 @@
-package com.bridgelabz.iplleagueanalyzer;
+package com.bridgelabz.analyzertest;
 
 import java.nio.file.Paths;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+
+import com.bridgelabz.analyzer.IPLAnalyzer;
+import com.bridgelabz.exception.IPLException;
+import com.bridgelabz.operations.IPLOperations;
 
 public class IPLAnalyzerTest {
 	IPLAnalyzer iplAnalyzer;
@@ -22,7 +26,7 @@ public class IPLAnalyzerTest {
 	}
 	
 	@Test
-	public void givenIPLBattingCSVData_ShouldReturnBestBattingAverages() {
+	public void givenIPLBattingCSVData_WhenBestBattingAverages_ShouldReturnBattingAverages() {
 		IPLOperations operationObject = new IPLOperations(iplAnalyzer);
 		try {
 			Double[] bestAverages = operationObject.getBestBattingAverage();
@@ -34,7 +38,7 @@ public class IPLAnalyzerTest {
 	}
 
 	@Test
-	public void givenIPLBattingCSVData_ShouldReturnTopBattingStrikeRates() {
+	public void givenIPLBattingCSVData_WhenTopBattingStrikeRates_ShouldReturnStrikeRates() {
 		IPLOperations operationObject = new IPLOperations(iplAnalyzer);
 		try {
 			Double[] topStrikingRates = operationObject.getTopBattingStrikeRates();
@@ -46,7 +50,7 @@ public class IPLAnalyzerTest {
 	}
 
 	@Test
-	public void givenIPLBattingCSVData_ShouldReturnBatsmenWithMaximumSixes() {
+	public void givenIPLBattingCSVData_WhenMaximumSixes_ShouldReturnBatsmen() {
 		IPLOperations operationObject = new IPLOperations(iplAnalyzer);
 		try {
 			String[] batsmenNames = operationObject.getBatsmenWithMaximumSixes();
@@ -58,7 +62,7 @@ public class IPLAnalyzerTest {
 	}
 
 	@Test
-	public void givenIPLBattingCSVData_ShouldReturnBatsmenWithMaximumFours() {
+	public void givenIPLBattingCSVData_WhenMaximumFours_ShouldReturnBatsmen() {
 		IPLOperations operationObject = new IPLOperations(iplAnalyzer);
 		try {
 			String[] batsmenNames = operationObject.getBatsmenWithMaximumFours();
@@ -70,7 +74,7 @@ public class IPLAnalyzerTest {
 	}
 
 	@Test
-	public void givenIPLBattingCSVData_ShouldReturnBatsmenWithMaximumBoundaries() {
+	public void givenIPLBattingCSVData_WhenMaximumBoundaries_ShouldReturnBatsmen() {
 		IPLOperations operationObject = new IPLOperations(iplAnalyzer);
 		try {
 			String[] batsmenNames = operationObject.getBatsmenWithMaximumBoundaries();
@@ -82,7 +86,7 @@ public class IPLAnalyzerTest {
 	}
 
 	@Test
-	public void givenIPLBattingCSVData_ShouldReturnBatsmenWithBestStrikeRatesAndMaximumBoundaries() {
+	public void givenIPLBattingCSVData_WhenBestStrikeRatesAndMaximumBoundaries_ShouldReturnBatsmen() {
 		IPLOperations operationObject = new IPLOperations(iplAnalyzer);
 		try {
 			String[] batsmenNames = operationObject.getBatsmenWithBestStrikeRatesAndMaximumBoundaries();
@@ -94,7 +98,7 @@ public class IPLAnalyzerTest {
 	}
 
 	@Test
-	public void givenIPLBattingCSVData_ShouldReturnBatsmenWithBestAveragesWithBestStrikeRates() {
+	public void givenIPLBattingCSVData_WhenBestAveragesWithBestStrikeRates_ShouldReturnBatsmen() {
 		IPLOperations operationObject = new IPLOperations(iplAnalyzer);
 		try {
 			String[] batsmenNames = operationObject.getBatsmenWithBestAveragesWithBestStrikeRates();
@@ -106,7 +110,7 @@ public class IPLAnalyzerTest {
 	}
 
 	@Test
-	public void givenIPLBattingCSVData_ShouldReturnBatsmenWithMaximumRunsWithBestAverages() {
+	public void givenIPLBattingCSVData_WhenMaximumRunsWithBestAverages_ShouldReturnBatsmen() {
 		IPLOperations operationObject = new IPLOperations(iplAnalyzer);
 		try {
 			String[] batsmenNames = operationObject.getBatsmenWithMaximumRunsWithBestAverages();
@@ -118,7 +122,7 @@ public class IPLAnalyzerTest {
 	}
 
 	@Test
-	public void givenIPLBowlingCSVData_ShouldReturnBestBowlingAverages() {
+	public void givenIPLBowlingCSVData_WhenBestBowlingAverages_ShouldReturnBowlingAverages() {
 		IPLOperations operationObject = new IPLOperations(iplAnalyzer);
 		try {
 			Double[] bestBowlingAverages = operationObject.getBestBowlingAverage();
@@ -129,7 +133,7 @@ public class IPLAnalyzerTest {
 		}
 	}
 	@Test
-	public void givenIPLBowlingCSVData_ShouldReturnTopBowlingStrikeRates() {
+	public void givenIPLBowlingCSVData_WhenTopBowlingStrikeRates_ShouldReturnStrikeRates() {
 		IPLOperations operationObject = new IPLOperations(iplAnalyzer);
 		try {
 			Double[] topBowlingStrikeRates = operationObject.getTopBowlingStrikeRates();
@@ -141,7 +145,7 @@ public class IPLAnalyzerTest {
 	}
 
 	@Test
-	public void givenIPLBowlingCSVData_ShouldReturnBowlersWithBestEconomy() {
+	public void givenIPLBowlingCSVData_WhenBestEconomy_ShouldReturnBowlers() {
 		IPLOperations operationObject = new IPLOperations(iplAnalyzer);
 		try {
 			String[] bowlerNames = operationObject.getBowlersWithBestEconomy();
@@ -153,7 +157,7 @@ public class IPLAnalyzerTest {
 	}
 
 	@Test
-	public void givenIPLBowlingCSVData_ShouldReturnBowlersWithBestStrikeRatesWithFourAndFiveWickets() {
+	public void givenIPLBowlingCSVData_WhenBestStrikeRatesWithFourAndFiveWickets_ShouldReturnBowlers() {
 		IPLOperations operationObject = new IPLOperations(iplAnalyzer);
 		try {
 			String[] bowlerNames = operationObject.getBowlersWithBestStrikeRatesWithFourAndFiveWickets();

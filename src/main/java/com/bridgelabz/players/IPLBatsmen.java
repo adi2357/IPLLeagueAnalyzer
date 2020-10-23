@@ -1,4 +1,4 @@
-package com.bridgelabz.iplleagueanalyzer;
+package com.bridgelabz.players;
 
 import com.opencsv.bean.CsvBindByName;
 
