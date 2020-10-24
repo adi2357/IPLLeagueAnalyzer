@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import com.bridgelabz.exception.IPLException;
+import com.bridgelabz.interfaces.IIPLAnalyzer;
 import com.bridgelabz.jarfile.opencsvbuilder.CSVBuilderFactory;
 import com.bridgelabz.jarfile.opencsvbuilder.CSVException;
 import com.bridgelabz.jarfile.opencsvbuilder.ICSVBuilder;
@@ -16,7 +17,7 @@ import com.bridgelabz.players.IPLAllRounder;
 import com.bridgelabz.players.IPLBatsmen;
 import com.bridgelabz.players.IPLBowlers;
 
-public class IPLAnalyzer {
+public class IPLAnalyzer implements IIPLAnalyzer{
 	public Path csvBattingFilePath;
 	public Path csvBowlingFilePath;
 	public List<IPLBatsmen> iplBattingList;

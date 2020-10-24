@@ -222,7 +222,7 @@ public class IPLAnalyzerTest {
 		IPLOperations operationObject = new IPLOperations(iplAnalyzer);
 		try {
 			String[] batsmenNames = operationObject.getBatsmenWithMaximumHundredsAndBestAverages();
-			String[] expectedBatsmenNames = {"David Warner", "Jonny Bairstow", "KL Rahul", "Virat Kohli", "Ajinkya Rahane"};
+			String[] expectedBatsmenNames = {"David Warner", "Jonny Bairstow", "KL Rahul","Sanju Samson", "Virat Kohli"};
 			Assert.assertArrayEquals(expectedBatsmenNames, batsmenNames);
 		} catch (IPLException e) {
 			System.out.println(e.getMessage());
